@@ -10,6 +10,7 @@ import SwiftUI
 struct Login: View {
     @State var email: String = ""
     @State var password: String = ""
+    @State private var isShowingDetailView = false
     
     var body: some View {
         ZStack {
@@ -84,16 +85,19 @@ struct Login: View {
                     
                     Spacer()
                         .frame(height: 60)
-
-                    Button {
-                        
-                    } label: {
-                        Text("Don't have an account? Signup")
-                            .foregroundColor(Color.white.opacity(0.7))
+                    
+                    NavigationLink(destination: Register()) {
+                        Button {
+                            
+                        } label: {
+                            Text("Don't have an account? Signup")
+                                .foregroundColor(Color.white.opacity(0.7))
+                        }
+                        .buttonStyle(.borderless)
+                        .frame(maxWidth: .infinity)
+                        .padding()
                     }
-                    .buttonStyle(.borderless)
-                    .frame(maxWidth: .infinity)
-                    .padding()
+
                 }
       
                 Spacer()

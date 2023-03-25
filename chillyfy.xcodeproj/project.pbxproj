@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A335FC1229CE8A8500459480 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A335FC1129CE8A8500459480 /* WelcomeView.swift */; };
+		A335FC1429CE8AC400459480 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A335FC1329CE8AC400459480 /* LocationManager.swift */; };
+		A335FC1629CE8F6300459480 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A335FC1529CE8F6300459480 /* LoadingView.swift */; };
+		A335FC1829CE948C00459480 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A335FC1729CE948C00459480 /* WeatherView.swift */; };
 		A33B8DAC29CD11C2009737AF /* chillyfyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B8DAB29CD11C2009737AF /* chillyfyApp.swift */; };
 		A33B8DAE29CD11C2009737AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B8DAD29CD11C2009737AF /* ContentView.swift */; };
 		A33B8DB029CD11C3009737AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33B8DAF29CD11C3009737AF /* Assets.xcassets */; };
@@ -19,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A335FC1129CE8A8500459480 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		A335FC1329CE8AC400459480 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A335FC1529CE8F6300459480 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		A335FC1729CE948C00459480 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		A33B8DA829CD11C2009737AF /* chillyfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chillyfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33B8DAB29CD11C2009737AF /* chillyfyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chillyfyApp.swift; sourceTree = "<group>"; };
 		A33B8DAD29CD11C2009737AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,10 +70,10 @@
 		A33B8DAA29CD11C2009737AF /* chillyfy */ = {
 			isa = PBXGroup;
 			children = (
-				A33B8DC129CD6026009737AF /* screens */,
+				A3BA94C229CE89FF00761E32 /* Managers */,
+				A3BA94C129CE89D300761E32 /* Views */,
 				A33B8DBC29CD15F7009737AF /* Info.plist */,
 				A33B8DAB29CD11C2009737AF /* chillyfyApp.swift */,
-				A33B8DAD29CD11C2009737AF /* ContentView.swift */,
 				A33B8DBF29CD1C58009737AF /* Raleway.ttf */,
 				A33B8DBA29CD1564009737AF /* Fasthand-Regular.ttf */,
 				A33B8DAF29CD11C3009737AF /* Assets.xcassets */,
@@ -82,14 +90,26 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		A33B8DC129CD6026009737AF /* screens */ = {
+		A3BA94C129CE89D300761E32 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A33B8DBD29CD1877009737AF /* Splash.swift */,
-				A33B8DC229CD6040009737AF /* Login.swift */,
 				A33B8DC429CD61AF009737AF /* Register.swift */,
+				A33B8DC229CD6040009737AF /* Login.swift */,
+				A33B8DBD29CD1877009737AF /* Splash.swift */,
+				A33B8DAD29CD11C2009737AF /* ContentView.swift */,
+				A335FC1129CE8A8500459480 /* WelcomeView.swift */,
+				A335FC1529CE8F6300459480 /* LoadingView.swift */,
+				A335FC1729CE948C00459480 /* WeatherView.swift */,
 			);
-			path = screens;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A3BA94C229CE89FF00761E32 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A335FC1329CE8AC400459480 /* LocationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,8 +185,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A33B8DAE29CD11C2009737AF /* ContentView.swift in Sources */,
+				A335FC1229CE8A8500459480 /* WelcomeView.swift in Sources */,
 				A33B8DBE29CD1877009737AF /* Splash.swift in Sources */,
+				A335FC1429CE8AC400459480 /* LocationManager.swift in Sources */,
 				A33B8DAC29CD11C2009737AF /* chillyfyApp.swift in Sources */,
+				A335FC1629CE8F6300459480 /* LoadingView.swift in Sources */,
+				A335FC1829CE948C00459480 /* WeatherView.swift in Sources */,
 				A33B8DC329CD6040009737AF /* Login.swift in Sources */,
 				A33B8DC529CD61AF009737AF /* Register.swift in Sources */,
 			);
@@ -294,6 +318,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"chillyfy/Preview Content\"";
@@ -311,8 +336,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ca.centennialcollege.chillyfy;
+				PRODUCT_BUNDLE_IDENTIFIER = himanshu.chillyfy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -324,6 +350,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"chillyfy/Preview Content\"";
@@ -341,8 +368,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ca.centennialcollege.chillyfy;
+				PRODUCT_BUNDLE_IDENTIFIER = himanshu.chillyfy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
