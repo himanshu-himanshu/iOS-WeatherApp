@@ -3,16 +3,26 @@
 //  chillyfy
 //
 //  Created by Himanshu on 2023-03-26.
-//
 
 import SwiftUI
 
 struct AuthView: View {
+    @State var isLoggedIn = false
+    @State var currentAuthView = "Login"
     
     var body: some View {
         
-        LoginView()
-//        SignupView()
+        if isLoggedIn {
+          BottomTabView()
+        } else {
+            if currentAuthView == "Login" {
+                LoginView(currentAuthView: $currentAuthView, isLoggedIn: $isLoggedIn)
+            }
+            if currentAuthView == "Signup" {
+                SignupView(currentAuthView: $currentAuthView)
+                    .transition(.move(edge: .bottom))
+            }
+        }
     }
 }
 
@@ -23,6 +33,9 @@ struct LoginView: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var isShowingDetailView = false
+    @Binding var currentAuthView: String
+    @Binding var isLoggedIn: Bool
+    
     var body: some View {
         ZStack {
             Color("Primary")
@@ -81,6 +94,9 @@ struct LoginView: View {
                     
                     HStack {
                         Button {
+                            withAnimation {
+                                self.isLoggedIn = true
+                            }
                             
                         } label: {
                             Text("Login")
@@ -99,7 +115,9 @@ struct LoginView: View {
                     
                    
                         Button {
-                            
+                            withAnimation {
+                                self.currentAuthView = "Signup"
+                            }
                         } label: {
                             Text("Don't have an account? Signup")
                                 .foregroundColor(Color.white.opacity(0.7))
@@ -107,8 +125,6 @@ struct LoginView: View {
                         .buttonStyle(.borderless)
                         .frame(maxWidth: .infinity)
                         .padding()
-            
-                    
                 }
                 
                 Spacer()
@@ -127,6 +143,7 @@ struct SignupView: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var isShowingDetailView = false
+    @Binding var currentAuthView: String
     
     var body: some View {
         ZStack {
@@ -220,6 +237,9 @@ struct SignupView: View {
                         .frame(height: 40)
 
                     Button {
+                        withAnimation {
+                            self.currentAuthView = "Login"
+                        }
                         
                     } label: {
                         Text("Already a member? Login")

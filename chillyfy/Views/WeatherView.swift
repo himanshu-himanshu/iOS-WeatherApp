@@ -12,6 +12,19 @@ struct WeatherView: View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color("Gradient2"), Color("Gradient1")]), startPoint: .topLeading, endPoint: .bottomTrailing)
             
+            VStack(alignment: .leading) {
+                Button(action: {
+                    print("Saved city to database")
+                }) {
+                    Image("like")
+                        .resizable()
+                        .scaledToFit()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 24, height: 24, alignment: .top)
+                }
+            }
+            .position(x:350, y:70)
+            
             VStack {
                 Image("sun")
                     .resizable()
@@ -35,7 +48,7 @@ struct WeatherView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 20, alignment: .bottom)
                     
-                    Text("Brampton, Canada")
+                    Text("Brampton, CA")
                         .font(.custom("Raleway", size: 22))
                         .foregroundColor(Color.white)
                         .fontWeight(.semibold)
