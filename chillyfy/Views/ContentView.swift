@@ -9,11 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var locationManager = LocationManager()
+    @State var isLoggesIn = false
     
     var body: some View {
-        //Login()
-        WeatherView()
-        
+        if isLoggesIn {
+            BottomTabView()
+        } else {
+            AuthView()
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
 //        VStack {
 //            if let location = locationManager.location {
 //                Text("Your coordinates are: \(location.longitude), \(location.latitude)")
@@ -26,11 +39,3 @@ struct ContentView: View {
 //                }
 //            }
 //        }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
