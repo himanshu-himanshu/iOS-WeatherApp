@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A335FC1229CE8A8500459480 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A335FC1129CE8A8500459480 /* WelcomeView.swift */; };
 		A335FC1429CE8AC400459480 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A335FC1329CE8AC400459480 /* LocationManager.swift */; };
-		A335FC1629CE8F6300459480 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A335FC1529CE8F6300459480 /* LoadingView.swift */; };
 		A335FC1829CE948C00459480 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A335FC1729CE948C00459480 /* WeatherView.swift */; };
 		A33B8DAC29CD11C2009737AF /* chillyfyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B8DAB29CD11C2009737AF /* chillyfyApp.swift */; };
 		A33B8DAE29CD11C2009737AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B8DAD29CD11C2009737AF /* ContentView.swift */; };
@@ -20,15 +18,21 @@
 		A33B8DC029CD1C58009737AF /* Raleway.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A33B8DBF29CD1C58009737AF /* Raleway.ttf */; };
 		A35C8BA329D0BEB2000CEE96 /* SavedCitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C8BA229D0BEB2000CEE96 /* SavedCitiesView.swift */; };
 		A35C8BA529D0C2A5000CEE96 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C8BA429D0C2A5000CEE96 /* AuthView.swift */; };
+		A386693229D107C800224861 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A386693129D107C800224861 /* GoogleService-Info.plist */; };
+		A386693529D1083E00224861 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A386693429D1083E00224861 /* FirebaseAnalytics */; };
+		A386693729D1083E00224861 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A386693629D1083E00224861 /* FirebaseAuth */; };
+		A386693929D1083E00224861 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = A386693829D1083E00224861 /* FirebaseDatabase */; };
+		A386693B29D1083E00224861 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A386693A29D1083E00224861 /* FirebaseDatabaseSwift */; };
+		A386693D29D1083E00224861 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A386693C29D1083E00224861 /* FirebaseFirestore */; };
+		A386693F29D1083E00224861 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A386693E29D1083E00224861 /* FirebaseStorage */; };
+		A386694229D1168000224861 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A386694129D1168000224861 /* String.swift */; };
 		A3B4F54D29D0AC3D0046D7A5 /* BottomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B4F54C29D0AC3D0046D7A5 /* BottomTabView.swift */; };
 		A3B4F54F29D0B76C0046D7A5 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B4F54E29D0B76C0046D7A5 /* SettingView.swift */; };
 		A3B4F55129D0B9850046D7A5 /* WeatherMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B4F55029D0B9850046D7A5 /* WeatherMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A335FC1129CE8A8500459480 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		A335FC1329CE8AC400459480 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		A335FC1529CE8F6300459480 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		A335FC1729CE948C00459480 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		A33B8DA829CD11C2009737AF /* chillyfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chillyfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33B8DAB29CD11C2009737AF /* chillyfyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chillyfyApp.swift; sourceTree = "<group>"; };
@@ -41,6 +45,8 @@
 		A33B8DBF29CD1C58009737AF /* Raleway.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Raleway.ttf; sourceTree = "<group>"; };
 		A35C8BA229D0BEB2000CEE96 /* SavedCitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCitiesView.swift; sourceTree = "<group>"; };
 		A35C8BA429D0C2A5000CEE96 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		A386693129D107C800224861 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A386694129D1168000224861 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		A3B4F54C29D0AC3D0046D7A5 /* BottomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabView.swift; sourceTree = "<group>"; };
 		A3B4F54E29D0B76C0046D7A5 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		A3B4F55029D0B9850046D7A5 /* WeatherMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMapView.swift; sourceTree = "<group>"; };
@@ -51,6 +57,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A386693B29D1083E00224861 /* FirebaseDatabaseSwift in Frameworks */,
+				A386693929D1083E00224861 /* FirebaseDatabase in Frameworks */,
+				A386693529D1083E00224861 /* FirebaseAnalytics in Frameworks */,
+				A386693D29D1083E00224861 /* FirebaseFirestore in Frameworks */,
+				A386693729D1083E00224861 /* FirebaseAuth in Frameworks */,
+				A386693F29D1083E00224861 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +88,8 @@
 		A33B8DAA29CD11C2009737AF /* chillyfy */ = {
 			isa = PBXGroup;
 			children = (
+				A386694029D1167300224861 /* Extensions */,
+				A386693129D107C800224861 /* GoogleService-Info.plist */,
 				A3BA94C229CE89FF00761E32 /* Managers */,
 				A3BA94C129CE89D300761E32 /* Views */,
 				A33B8DBC29CD15F7009737AF /* Info.plist */,
@@ -96,13 +110,19 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		A386694029D1167300224861 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A386694129D1168000224861 /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A3BA94C129CE89D300761E32 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				A33B8DBD29CD1877009737AF /* Splash.swift */,
 				A33B8DAD29CD11C2009737AF /* ContentView.swift */,
-				A335FC1129CE8A8500459480 /* WelcomeView.swift */,
-				A335FC1529CE8F6300459480 /* LoadingView.swift */,
 				A335FC1729CE948C00459480 /* WeatherView.swift */,
 				A3B4F54C29D0AC3D0046D7A5 /* BottomTabView.swift */,
 				A3B4F54E29D0B76C0046D7A5 /* SettingView.swift */,
@@ -137,6 +157,14 @@
 			dependencies = (
 			);
 			name = chillyfy;
+			packageProductDependencies = (
+				A386693429D1083E00224861 /* FirebaseAnalytics */,
+				A386693629D1083E00224861 /* FirebaseAuth */,
+				A386693829D1083E00224861 /* FirebaseDatabase */,
+				A386693A29D1083E00224861 /* FirebaseDatabaseSwift */,
+				A386693C29D1083E00224861 /* FirebaseFirestore */,
+				A386693E29D1083E00224861 /* FirebaseStorage */,
+			);
 			productName = chillyfy;
 			productReference = A33B8DA829CD11C2009737AF /* chillyfy.app */;
 			productType = "com.apple.product-type.application";
@@ -165,6 +193,9 @@
 				Base,
 			);
 			mainGroup = A33B8D9F29CD11C2009737AF;
+			packageReferences = (
+				A386693329D1083E00224861 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = A33B8DA929CD11C2009737AF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -181,6 +212,7 @@
 			files = (
 				A33B8DC029CD1C58009737AF /* Raleway.ttf in Resources */,
 				A33B8DBB29CD1564009737AF /* Fasthand-Regular.ttf in Resources */,
+				A386693229D107C800224861 /* GoogleService-Info.plist in Resources */,
 				A33B8DB329CD11C3009737AF /* Preview Assets.xcassets in Resources */,
 				A33B8DB029CD11C3009737AF /* Assets.xcassets in Resources */,
 			);
@@ -194,15 +226,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A35C8BA529D0C2A5000CEE96 /* AuthView.swift in Sources */,
+				A386694229D1168000224861 /* String.swift in Sources */,
 				A35C8BA329D0BEB2000CEE96 /* SavedCitiesView.swift in Sources */,
 				A3B4F55129D0B9850046D7A5 /* WeatherMapView.swift in Sources */,
 				A33B8DAE29CD11C2009737AF /* ContentView.swift in Sources */,
-				A335FC1229CE8A8500459480 /* WelcomeView.swift in Sources */,
 				A33B8DBE29CD1877009737AF /* Splash.swift in Sources */,
 				A3B4F54D29D0AC3D0046D7A5 /* BottomTabView.swift in Sources */,
 				A335FC1429CE8AC400459480 /* LocationManager.swift in Sources */,
 				A33B8DAC29CD11C2009737AF /* chillyfyApp.swift in Sources */,
-				A335FC1629CE8F6300459480 /* LoadingView.swift in Sources */,
 				A335FC1829CE948C00459480 /* WeatherView.swift in Sources */,
 				A3B4F54F29D0B76C0046D7A5 /* SettingView.swift in Sources */,
 			);
@@ -338,6 +369,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = chillyfy/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -348,7 +380,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = himanshu.chillyfy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.himanshu.chillyfy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -370,6 +402,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = chillyfy/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -380,7 +413,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = himanshu.chillyfy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.himanshu.chillyfy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -411,6 +444,50 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A386693329D1083E00224861 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A386693429D1083E00224861 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A386693329D1083E00224861 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		A386693629D1083E00224861 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A386693329D1083E00224861 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		A386693829D1083E00224861 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A386693329D1083E00224861 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		A386693A29D1083E00224861 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A386693329D1083E00224861 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		A386693C29D1083E00224861 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A386693329D1083E00224861 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		A386693E29D1083E00224861 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A386693329D1083E00224861 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A33B8DA029CD11C2009737AF /* Project object */;
 }

@@ -1,25 +1,32 @@
-//
-//  AuthView.swift
-//  chillyfy
-//
-//  Created by Himanshu on 2023-03-26.
+//  File Name: AuthView.swift
+
+//  Authors: Himanshu (301296001) & Gurminder (301294300)
+//  Subject: MAPD724 Advanced iOS Development
+//  Assignment: Assignment 4 Part 1
+
+//  Task: Creating Weather App
+
+//  Date modified: 26/03/2023
 
 import SwiftUI
+import FirebaseAuth
 
 struct AuthView: View {
+    @AppStorage("uid") var userID:String = ""
     @State var isLoggedIn = false
     @State var currentAuthView = "Login"
     
     var body: some View {
         
         if isLoggedIn {
-          BottomTabView()
+            BottomTabView()
+                .transition(.move(edge: .trailing))
         } else {
             if currentAuthView == "Login" {
                 LoginView(currentAuthView: $currentAuthView, isLoggedIn: $isLoggedIn)
             }
             if currentAuthView == "Signup" {
-                SignupView(currentAuthView: $currentAuthView)
+                SignupView(currentAuthView: $currentAuthView, isLoggedIn: $isLoggedIn)
                     .transition(.move(edge: .bottom))
             }
         }
@@ -30,11 +37,13 @@ struct AuthView: View {
 /**---------------- Login View  -----------------*/
 
 struct LoginView: View {
+    @AppStorage("uid") var userID:String = ""
     @State var email: String = ""
     @State var password: String = ""
     @State var isShowingDetailView = false
     @Binding var currentAuthView: String
     @Binding var isLoggedIn: Bool
+    @State var showErrorAlert = false
     
     var body: some View {
         ZStack {
@@ -64,11 +73,20 @@ struct LoginView: View {
                                 .foregroundColor(Color.white.opacity(0.7))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
-                        TextField("", text: $email)
-                            .foregroundColor(Color.white)
-                            .frame(maxWidth: .infinity, maxHeight: 38)
-                            .autocapitalization(.none)
-                            .autocorrectionDisabled(true)
+                        HStack {
+                            TextField("", text: $email)
+                                .foregroundColor(Color.white)
+                                .frame(maxWidth: .infinity, maxHeight: 38)
+                                .autocapitalization(.none)
+                                .autocorrectionDisabled(true)
+                            if(email.count != 0) {
+                                Image(systemName: email.isEmailValid() ? "checkmark" : "xmark")
+                                    .foregroundColor(email.isEmailValid() ? Color("Gradient2") : .red)
+                                    .fontWeight(.bold)
+                            }
+
+                        }
+                        
                     }
                     .padding()
                     .padding(.horizontal, 20)
@@ -95,7 +113,23 @@ struct LoginView: View {
                     HStack {
                         Button {
                             withAnimation {
-                                self.isLoggedIn = true
+                                Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                                    if let error = error {
+                                        showErrorAlert = true
+                                        print(error)
+                                        return
+                                    }
+                                    
+                                    if let authResult = authResult {
+                                        email = ""
+                                        password = ""
+                                        withAnimation {
+                                            //userID = authResult.user.uid
+                                            isLoggedIn = true
+                                        }
+                                        print(authResult.user.uid)
+                                    }
+                                }
                             }
                             
                         } label: {
@@ -106,14 +140,19 @@ struct LoginView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(Color("Gradient2"))
+                        .alert("Error", isPresented: $showErrorAlert) {
+                            Button("OK", role: .cancel, action: {
+                                isLoggedIn = false
+                            })
+                        } message: {
+                            Text("Something went wrong! Try again")
+                        }
                     }
                     .cornerRadius(50)
                     .padding(.vertical)
                     
                     Spacer()
                         .frame(height: 60)
-                    
-                   
                         Button {
                             withAnimation {
                                 self.currentAuthView = "Signup"
@@ -139,11 +178,15 @@ struct LoginView: View {
 
 
 struct SignupView: View {
+    @AppStorage("uid") var userID:String = ""
     @State var username: String = ""
     @State var email: String = ""
     @State var password: String = ""
     @State var isShowingDetailView = false
     @Binding var currentAuthView: String
+    @State var showAlert = false
+    @State var showErrorAlert = false
+    @Binding var isLoggedIn: Bool
     
     var body: some View {
         ZStack {
@@ -168,7 +211,7 @@ struct SignupView: View {
                 
                 VStack {
                     ZStack {
-                        if email.isEmpty {
+                        if username.isEmpty {
                             Text("Username")
                                 .foregroundColor(Color.white.opacity(0.7))
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -190,11 +233,18 @@ struct SignupView: View {
                                 .foregroundColor(Color.white.opacity(0.7))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
-                        TextField("", text: $email)
-                            .foregroundColor(Color.white)
-                            .frame(maxWidth: .infinity, maxHeight: 38)
-                            .autocapitalization(.none)
-                            .autocorrectionDisabled(true)
+                        HStack {
+                            TextField("", text: $email)
+                                .foregroundColor(Color.white)
+                                .frame(maxWidth: .infinity, maxHeight: 38)
+                                .autocapitalization(.none)
+                                .autocorrectionDisabled(true)
+                            if(email.count != 0) {
+                                Image(systemName: email.isEmailValid() ? "checkmark" : "xmark")
+                                    .foregroundColor(email.isEmailValid() ? Color("Gradient2") : .red)
+                                    .fontWeight(.bold)
+                            }
+                        }
                     }
                     .padding()
                     .padding(.horizontal, 20)
@@ -220,6 +270,24 @@ struct SignupView: View {
                     
                     HStack {
                         Button {
+                            withAnimation {
+                                Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                                    if (error != nil) {
+                                        showErrorAlert = true
+                                        print(error!)
+                                        return
+                                    }
+                                    
+                                    if let authResult = authResult {
+                                        username = ""
+                                        email = ""
+                                        password = ""
+                                        showAlert = true
+                                        userID = authResult.user.uid
+                                        print(authResult)
+                                    }
+                                }
+                            }
                             
                         } label: {
                             Text("Signup")
@@ -229,6 +297,20 @@ struct SignupView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(Color("Gradient2"))
+                        .alert("User Registered", isPresented: $showAlert) {
+                            Button("OK", role: .cancel, action: {
+                                isLoggedIn = true
+                            })
+                        } message: {
+                            Text("Registration successfull!")
+                        }
+                        .alert("Error", isPresented: $showErrorAlert) {
+                            Button("OK", role: .cancel, action: {
+                                isLoggedIn = false
+                            })
+                        } message: {
+                            Text("Something went wrong! Try again")
+                        }
                     }
                     .cornerRadius(50)
                     .padding(.vertical)

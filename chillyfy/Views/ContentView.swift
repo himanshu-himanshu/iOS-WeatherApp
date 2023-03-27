@@ -1,16 +1,29 @@
-//
-//  ContentView.swift
-//  chillyfy
-//
-//  Created by Himanshu on 2023-03-23.
+//  File Name: ContentView.swift
+
+//  Authors: Himanshu (301296001) & Gurminder (301294300)
+//  Subject: MAPD724 Advanced iOS Development
+//  Assignment: Assignment 4 Part 1
+
+//  Task: Creating Weather App
+
+//  Date modified: 26/03/2023
 
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var locationManager = LocationManager()
+    
+    @AppStorage("uid") var userID:String = ""
+    //print(userID)
     
     var body: some View {
-       AuthView()
+//
+//        if userID == "" {
+//            AuthView()
+//        } else {
+//
+//            BottomTabView()
+//        }
+        AuthView()
     }
 }
 

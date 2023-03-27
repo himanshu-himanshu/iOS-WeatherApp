@@ -1,9 +1,12 @@
-//
-//  Splash.swift
-//  chillyfy
-//
-//  Created by Himanshu on 2023-03-23.
-//
+//  File Name: Splash.swift
+
+//  Authors: Himanshu (301296001) & Gurminder (301294300)
+//  Subject: MAPD724 Advanced iOS Development
+//  Assignment: Assignment 4 Part 1
+
+//  Task: Creating Weather App
+
+//  Date modified: 26/03/2023
 
 import SwiftUI
 
@@ -28,9 +31,7 @@ struct SplashView: View {
                     Text("Chillyfy")
                         .font(.custom("Fasthand-Regular", size: 38))
                         .padding(.vertical)
-                        .foregroundColor(Color.white)
-                        
-                    
+                        .foregroundColor(Color.white)  
                 }
                 .padding()
             }

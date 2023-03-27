@@ -1,9 +1,14 @@
 //
 //  SavedCitiesView.swift
-//  chillyfy
-//
-//  Created by Himanshu on 2023-03-26.
-//
+//  File Name: SavedCities.swift
+
+//  Authors: Himanshu (301296001) & Gurminder (301294300)
+//  Subject: MAPD724 Advanced iOS Development
+//  Assignment: Assignment 4 Part 1
+
+//  Task: Creating Weather App
+
+//  Date modified: 26/03/2023
 
 import SwiftUI
 

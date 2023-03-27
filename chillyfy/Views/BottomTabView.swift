@@ -1,13 +1,17 @@
-//
-//  BottomTabView.swift
-//  chillyfy
-//
-//  Created by Himanshu on 2023-03-26.
-//
+//  File Name: BottomTabView.swift
+
+//  Authors: Himanshu (301296001) & Gurminder (301294300)
+//  Subject: MAPD724 Advanced iOS Development
+//  Assignment: Assignment 4 Part 1
+
+//  Task: Creating Weather App
+
+//  Date modified: 26/03/2023
 
 import SwiftUI
 
 struct BottomTabView: View {
+    //@Binding var isLoggedIn: Bool
     @State var selectedTab = "Home"
     
     init() {
@@ -16,23 +20,25 @@ struct BottomTabView: View {
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
+            withAnimation {
+                
             TabView(selection: $selectedTab) {
-                
-                WeatherView()
-                    .ignoresSafeArea(.all, edges: .all)
-                    .tag("Home")
-                
-                WeatherMapView()
-                     .ignoresSafeArea(.all, edges: .all)
-                     .tag("Map")
-                
-                SavedCitiesView()
-                     .ignoresSafeArea(.all, edges: .all)
-                     .tag("Heart")
-                
-                SettingView()
-                    .ignoresSafeArea(.all, edges: .all)
-                    .tag("Setting")
+                    WeatherView()
+                        .ignoresSafeArea(.all, edges: .all)
+                        .tag("Home")
+                    
+                    WeatherMapView()
+                        .ignoresSafeArea(.all, edges: .all)
+                        .tag("Map")
+                    
+                    SavedCitiesView()
+                        .ignoresSafeArea(.all, edges: .all)
+                        .tag("Heart")
+                    
+                    SettingView()
+                        .ignoresSafeArea(.all, edges: .all)
+                        .tag("Setting")
+                }
             }
             
             HStack(spacing: 0) {
@@ -74,9 +80,9 @@ struct BottomTabView: View {
         case "Setting":
             return Color("Purple")
         case "Map":
-            return Color("Orange")
-        case "Heart":
             return Color("Secondary")
+        case "Heart":
+            return Color("Orange")
         default:
             return Color.blue
         }
