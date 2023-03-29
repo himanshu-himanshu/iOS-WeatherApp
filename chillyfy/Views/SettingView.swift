@@ -10,9 +10,34 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
 
 struct SettingView: View {
     @AppStorage("uid") var userID:String = ""
+    let loggedUserId = AuthView.loggedUserID
+    @State var userName = ""
+    @State var userTheme = ""
+    
+    let db = Firestore.firestore()
+
+    /** Fetch data from Firestore database using logged in user ID */
+    func fetchDataFromFirestore() {
+        
+        let docRef = db.collection("users").document(loggedUserId)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                userName = document.data()!["username"] as! String
+                userName = "Hi, " + userName
+                print("Document data: \(dataDescription)")
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color("Gradient7"), Color("Gradient8")]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -20,6 +45,10 @@ struct SettingView: View {
             VStack {
                 
                 Text("Settings")
+                    .font(.custom("Fasthand-Regular", size: 38))
+                    .foregroundColor(Color.white)
+                
+                Text(userName)
                     .font(.custom("Fasthand-Regular", size: 38))
                     .foregroundColor(Color.white)
                 
@@ -46,7 +75,11 @@ struct SettingView: View {
                 .padding(.horizontal, 50)
             }
             
-        }.ignoresSafeArea(.all)
+        }
+        .ignoresSafeArea(.all)
+        .onAppear {
+            self.fetchDataFromFirestore()
+        }
     }
 }
 

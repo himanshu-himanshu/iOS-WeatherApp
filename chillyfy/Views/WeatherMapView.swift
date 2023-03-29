@@ -15,8 +15,6 @@ struct WeatherMapView: View {
     
     @State private var viewModal = WeatherMapViewModal()
     
-    
-    
     var body: some View {
         
         Map(coordinateRegion: $viewModal.region, showsUserLocation: true)
@@ -39,7 +37,6 @@ final class WeatherMapViewModal: NSObject, ObservableObject, CLLocationManagerDe
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 43.72662677253413, longitude: -79.75619216635543), span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09))
     
     var locationManager: CLLocationManager?
-    
     
     func checkIfLocationServicesIsEnabled() {
         DispatchQueue.global().async {

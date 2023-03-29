@@ -10,11 +10,14 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
 
 struct AuthView: View {
     @AppStorage("uid") var userID:String = ""
     @State var isLoggedIn = false
     @State var currentAuthView = "Login"
+    static var loggedUserID = ""
     
     var body: some View {
         
@@ -121,6 +124,7 @@ struct LoginView: View {
                                     }
                                     
                                     if let authResult = authResult {
+                                        AuthView.loggedUserID = authResult.user.uid
                                         email = ""
                                         password = ""
                                         withAnimation {
@@ -188,6 +192,44 @@ struct SignupView: View {
     @State var showErrorAlert = false
     @Binding var isLoggedIn: Bool
     
+    let db = Firestore.firestore()
+    
+    /** Function to register user to firebase also to create user into Firestore database */
+    func registerUserToFirebase() {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if (error != nil) {
+                showErrorAlert = true
+                print(error!)
+                return
+            }
+            
+            if let authResult = authResult {
+                showAlert = true
+                userID = authResult.user.uid
+                
+                AuthView.loggedUserID = userID
+                
+                /** Write data into Firestore using ID returned after authentication */
+                db.collection("users").document(userID).setData([
+                    "email": email,
+                    "username": username,
+                    "savedCities": [],
+                    "theme": "dark"
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
+                }
+                username = ""
+                email = ""
+                password = ""
+                print("User ID: ", userID)
+            }
+        }
+    }
+
     var body: some View {
         ZStack {
             Color("Primary")
@@ -271,22 +313,7 @@ struct SignupView: View {
                     HStack {
                         Button {
                             withAnimation {
-                                Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                                    if (error != nil) {
-                                        showErrorAlert = true
-                                        print(error!)
-                                        return
-                                    }
-                                    
-                                    if let authResult = authResult {
-                                        username = ""
-                                        email = ""
-                                        password = ""
-                                        showAlert = true
-                                        userID = authResult.user.uid
-                                        print(authResult)
-                                    }
-                                }
+                                registerUserToFirebase()
                             }
                             
                         } label: {
