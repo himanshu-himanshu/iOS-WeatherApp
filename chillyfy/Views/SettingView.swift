@@ -17,7 +17,8 @@ struct SettingView: View {
     @AppStorage("uid") var userID:String = ""
     let loggedUserId = AuthView.loggedUserID
     @State var userName = ""
-    @State var userTheme = ""
+    @State var userEmail = ""
+    @State var darkTheme = true
     
     let db = Firestore.firestore()
 
@@ -30,7 +31,7 @@ struct SettingView: View {
             if let document = document, document.exists {
                 let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                 userName = document.data()!["username"] as! String
-                userName = "Hi, " + userName
+                userEmail = document.data()!["email"] as! String
                 print("Document data: \(dataDescription)")
             } else {
                 print("Document does not exist")
@@ -40,45 +41,101 @@ struct SettingView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("Gradient7"), Color("Gradient8")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(gradient: Gradient(colors: [Color("Primary"), Color("DarkGray")]), startPoint: .leading, endPoint: .trailing)
             
             VStack {
+                Spacer()
+                    .frame(height: 60)
                 
-                Text("Settings")
-                    .font(.custom("Fasthand-Regular", size: 38))
-                    .foregroundColor(Color.white)
-                
-                Text(userName)
-                    .font(.custom("Fasthand-Regular", size: 38))
-                    .foregroundColor(Color.white)
+                HStackLayout() {
+                    Text("Settings")
+                        .font(.custom("Fasthand-Regular", size: 44))
+                        .foregroundColor(Color.white)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 30)
                 
                 Spacer()
-                    .frame(height: 300)
+                    .frame(height: 40)
                 
-                Button {
-                    let firebaseAuth = Auth.auth()
-                    do {
-                      try firebaseAuth.signOut()
-                        //userID = ""
-                        print("Logged Out")
-                    } catch let signOutError as NSError {
-                      print("Error signing out: %@", signOutError)
-                    }
-                } label: {
-                    Text("Logout")
-                        .frame(maxWidth: .infinity, maxHeight: 44)
-                        .font(.custom("Raleway", size: 18))
-                        .fontWeight(Font.Weight.semibold)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(Color("Gradient3"))
-                .padding(.horizontal, 50)
-            }
+                Image("user")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 100, height: 100, alignment: .bottom)
+                    .clipped()
+                    .shadow(radius: 3)
+                
+                Spacer()
+                    .frame(height:30)
             
+                Form {
+                    Section(header: Text("Personal Information")) {
+                        HStack {
+                            Text("Username")
+                                .foregroundColor(Color("Primary"))
+                            Spacer()
+                            Text(userName)
+                                .foregroundColor(.gray)
+                        }
+                        HStack {
+                            Text("Email")
+                                .foregroundColor(Color("Primary"))
+                            Spacer()
+                            Text(userEmail)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    
+                    Section(header: Text("About Us")) {
+                        HStack {
+                            Button(action: {
+                                print("About Us Page Navigation")
+                            }) {
+                                Text("About App")
+                                    .foregroundColor(.blue)
+                            }
+                            Spacer()
+                            Image("next")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 30, height: 30, alignment: .bottom)
+                        }
+                        
+                        HStack {
+                            Link("Terms of Service", destination: URL(string: "https://google.com")!)
+                            Spacer()
+                            Image("next")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 30, height: 30, alignment: .bottom)
+                        }
+                    }
+                    
+                    Section(header: Text("Account Actions")) {
+                        Toggle("Dark Theme", isOn: $darkTheme)
+                            .tint(Color("Gradient2"))
+                            .foregroundColor(Color("Primary"))
+                        
+                        HStack {
+                            Button(action: {
+                                print("About Us Page Navigation")
+                            }) {
+                                Text("Log Out")
+                                    .foregroundColor(Color(.red))
+                            }
+                            Spacer()
+                            Image("next")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 30, height: 30, alignment: .bottom)
+                        }
+                    }
+                }
+            }
         }
         .ignoresSafeArea(.all)
         .onAppear {
-            self.fetchDataFromFirestore()
+            //self.fetchDataFromFirestore()
         }
     }
 }
