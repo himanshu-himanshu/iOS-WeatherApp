@@ -13,7 +13,6 @@ import SwiftUI
 struct BottomTabView: View {
     //@Binding var isLoggedIn: Bool
     @State var selectedTab = "Home"
-    
     init() {
         UITabBar.appearance().isHidden = true
     }
@@ -23,7 +22,7 @@ struct BottomTabView: View {
             withAnimation {
                 
             TabView(selection: $selectedTab) {
-                    WeatherView()
+                    WeatherInitialView()
                         .ignoresSafeArea(.all, edges: .all)
                         .tag("Home")
                     

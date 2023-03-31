@@ -13,16 +13,8 @@ import SwiftUI
 struct ContentView: View {
     
     @AppStorage("uid") var userID:String = ""
-    //print(userID)
     
     var body: some View {
-//
-//        if userID == "" {
-//            AuthView()
-//        } else {
-//
-//            BottomTabView()
-//        }
         AuthView()
     }
 }

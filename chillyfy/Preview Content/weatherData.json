@@ -1,0 +1,52 @@
+{
+    "coord": {
+        "lon": -79.7663,
+        "lat": 43.6834
+    },
+    "weather": [
+        {
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10d"
+        },
+        {
+            "id": 701,
+            "main": "Mist",
+            "description": "mist",
+            "icon": "50d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 1.89,
+        "feels_like": -0.85,
+        "temp_min": 1.09,
+        "temp_max": 2.42,
+        "pressure": 1015,
+        "humidity": 93
+    },
+    "visibility": 9656,
+    "wind": {
+        "speed": 2.57,
+        "deg": 100
+    },
+    "rain": {
+        "1h": 0.36
+    },
+    "clouds": {
+        "all": 100
+    },
+    "dt": 1680281017,
+    "sys": {
+        "type": 2,
+        "id": 2005207,
+        "country": "CA",
+        "sunrise": 1680260564,
+        "sunset": 1680306212
+    },
+    "timezone": -14400,
+    "id": 5907364,
+    "name": "Brampton",
+    "cod": 200
+}
