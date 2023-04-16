@@ -1,16 +1,15 @@
 //
-//  WeatherManager.swift
+//  UserValues.swift
 //  chillyfy
 //
-//  Created by Himanshu on 2023-03-31.
+//  Created by Himanshu on 2023-04-16.
 //
 
 import Foundation
-import CoreLocation
 
-class WeatherManager {
-    //var cityName = "brampton"
-    // HTTP request to get the current weather depending on the coordinates we got from LocationManager
+class userValues: ObservableObject {
+    @Published var weather: ResponseBody?
+    
     func getCurrentWeather(cityName: String) async throws -> ResponseBody {
         // Replace YOUR_API_KEY in the link below with your own
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=c74d993ef7636c85096fe3f53d574195&units=metric") else { fatalError("Missing URL") }
@@ -26,4 +25,3 @@ class WeatherManager {
         return decodedData
     }
 }
-

@@ -15,7 +15,7 @@ import FirebaseFirestore
 
 struct AuthView: View {
     @AppStorage("uid") var userID:String = ""
-    @State var isLoggedIn = false
+    @State var isLoggedIn = true
     @State var currentAuthView = "Login"
     static var loggedUserID = ""
     

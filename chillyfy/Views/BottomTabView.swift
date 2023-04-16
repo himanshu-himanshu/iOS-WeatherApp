@@ -22,7 +22,7 @@ struct BottomTabView: View {
             withAnimation {
                 
             TabView(selection: $selectedTab) {
-                    WeatherInitialView()
+                WeatherInitialView(cityName: "Brampton")
                         .ignoresSafeArea(.all, edges: .all)
                         .tag("Home")
                     

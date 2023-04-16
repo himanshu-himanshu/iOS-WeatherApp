@@ -13,4 +13,5 @@ struct City: Identifiable {
     var lat: String
     var lon: String
     var country: String
+    var imageUrl: String
 }

@@ -27,7 +27,8 @@ class popularCitiesViewModel: ObservableObject {
                 let country = data["country"] as? String ?? ""
                 let lat = data["lat"] as? String ?? ""
                 let lon = data["lon"] as? String ?? ""
-                return City(name: name, lat: lat, lon: lon, country: country)
+                let imageUrl = data["imageUrl"] as? String ?? ""
+                return City(name: name, lat: lat, lon: lon, country: country, imageUrl: imageUrl)
             }
         }
     }
