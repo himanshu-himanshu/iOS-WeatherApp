@@ -1,7 +1,5 @@
-//
 //  WeatherInitialView.swift
 //  chillyfy
-//
 //  Created by Himanshu on 2023-03-31.
 
 import SwiftUI

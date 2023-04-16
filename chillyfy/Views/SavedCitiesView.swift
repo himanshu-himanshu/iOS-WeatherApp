@@ -13,24 +13,37 @@
 import SwiftUI
 
 struct SavedCitiesView: View {
+    @ObservedObject private var viewModel = popularCitiesViewModel()
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color("Gradient3"), Color("Gradient4")]), startPoint: .topLeading, endPoint: .bottomTrailing)
             
             VStack {
                 
-                Text("Saved Cities")
+                Text("Popular Cities")
                     .font(.custom("Fasthand-Regular", size: 38))
                     .foregroundColor(Color.white)
                 
+                List(viewModel.cities) { city in // (2)
+                    VStack(alignment: .leading) {
+                        Text(city.name)
+                            .font(.headline)
+                        Text(city.country)
+                            .font(.subheadline)
+                    }
+                }
+                
             }
-            
-        }.ignoresSafeArea(.all)
+            .ignoresSafeArea(.all)
+            .onAppear() {
+                self.viewModel.fetchData()
+            }
+        }
     }
-}
-
-struct SavedCitiesView_Previews: PreviewProvider {
-    static var previews: some View {
-        SavedCitiesView()
+    
+    struct SavedCitiesView_Previews: PreviewProvider {
+        static var previews: some View {
+            SavedCitiesView()
+        }
     }
 }

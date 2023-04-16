@@ -14,7 +14,7 @@ struct WeatherDetails: View {
     var secondValue: String
 
     var body: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 20) {
             ZStack {
                 Rectangle()
                     .frame(width: 140,height: 100)

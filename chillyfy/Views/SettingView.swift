@@ -135,7 +135,7 @@ struct SettingView: View {
         }
         .ignoresSafeArea(.all)
         .onAppear {
-            //self.fetchDataFromFirestore()
+            self.fetchDataFromFirestore()
         }
     }
 }
