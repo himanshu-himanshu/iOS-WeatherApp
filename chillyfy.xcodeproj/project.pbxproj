@@ -18,6 +18,8 @@
 		A3134C2529EC41E30007A1D5 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3134C2429EC41E30007A1D5 /* CityModel.swift */; };
 		A3134C2729EC682C0007A1D5 /* UserValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3134C2629EC682C0007A1D5 /* UserValues.swift */; };
 		A3134C2929EC91FB0007A1D5 /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3134C2829EC91FB0007A1D5 /* ResponseBody.swift */; };
+		A3134C2B29ECAADA0007A1D5 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3134C2A29ECAADA0007A1D5 /* AboutView.swift */; };
+		A3134C2D29ECCD360007A1D5 /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3134C2C29ECCD360007A1D5 /* UserStateViewModel.swift */; };
 		A335FC1429CE8AC400459480 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A335FC1329CE8AC400459480 /* LocationManager.swift */; };
 		A335FC1829CE948C00459480 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A335FC1729CE948C00459480 /* WeatherView.swift */; };
 		A33B8DAC29CD11C2009737AF /* chillyfyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B8DAB29CD11C2009737AF /* chillyfyApp.swift */; };
@@ -54,6 +56,8 @@
 		A3134C2429EC41E30007A1D5 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 		A3134C2629EC682C0007A1D5 /* UserValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserValues.swift; sourceTree = "<group>"; };
 		A3134C2829EC91FB0007A1D5 /* ResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
+		A3134C2A29ECAADA0007A1D5 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		A3134C2C29ECCD360007A1D5 /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
 		A335FC1329CE8AC400459480 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A335FC1729CE948C00459480 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		A33B8DA829CD11C2009737AF /* chillyfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chillyfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +101,7 @@
 				A3134C2229EC41B10007A1D5 /* PopularCitiesViewModel.swift */,
 				A3134C2429EC41E30007A1D5 /* CityModel.swift */,
 				A3134C2829EC91FB0007A1D5 /* ResponseBody.swift */,
+				A3134C2C29ECCD360007A1D5 /* UserStateViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				A35C8BA429D0C2A5000CEE96 /* AuthView.swift */,
 				A30F7BD729D7517700F96395 /* WeatherInitialView.swift */,
 				A30F7BD929D751D000F96395 /* LoadingView.swift */,
+				A3134C2A29ECAADA0007A1D5 /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -277,6 +283,8 @@
 			files = (
 				A3134C2929EC91FB0007A1D5 /* ResponseBody.swift in Sources */,
 				A30F7BDD29D7576100F96395 /* WeatherDetails.swift in Sources */,
+				A3134C2B29ECAADA0007A1D5 /* AboutView.swift in Sources */,
+				A3134C2D29ECCD360007A1D5 /* UserStateViewModel.swift in Sources */,
 				A3134C2529EC41E30007A1D5 /* CityModel.swift in Sources */,
 				A35C8BA529D0C2A5000CEE96 /* AuthView.swift in Sources */,
 				A30F7BD829D7517700F96395 /* WeatherInitialView.swift in Sources */,

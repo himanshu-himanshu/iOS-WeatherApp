@@ -15,14 +15,13 @@ import FirebaseFirestore
 
 struct AuthView: View {
     @AppStorage("uid") var userID:String = ""
-    @State var isLoggedIn = true
+    @State var isLoggedIn = false
     @State var currentAuthView = "Login"
     static var loggedUserID = ""
     
     var body: some View {
-        
         if isLoggedIn {
-            BottomTabView()
+            BottomTabView(isLoggedIn: $isLoggedIn)
                 .transition(.move(edge: .trailing))
         } else {
             if currentAuthView == "Login" {
@@ -41,8 +40,8 @@ struct AuthView: View {
 
 struct LoginView: View {
     @AppStorage("uid") var userID:String = ""
-    @State var email: String = ""
-    @State var password: String = ""
+    @State var email: String = "him@yopmail.com"
+    @State var password: String = "himanshu"
     @State var isShowingDetailView = false
     @Binding var currentAuthView: String
     @Binding var isLoggedIn: Bool

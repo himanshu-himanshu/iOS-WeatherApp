@@ -19,6 +19,8 @@ struct SettingView: View {
     @State var userName = ""
     @State var userEmail = ""
     @State var darkTheme = true
+    @State var showLogOut = false
+    @Binding var isLoggedIn: Bool
     
     let db = Firestore.firestore()
 
@@ -40,108 +42,117 @@ struct SettingView: View {
     }
     
     var body: some View {
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("Primary"), Color("DarkGray")]), startPoint: .leading, endPoint: .trailing)
-            
-            VStack {
-                Spacer()
-                    .frame(height: 60)
+        NavigationView {
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: [Color("Primary"), Color("DarkGray")]), startPoint: .leading, endPoint: .trailing)
                 
-                HStackLayout() {
-                    Text("Settings")
-                        .font(.custom("Fasthand-Regular", size: 44))
-                        .foregroundColor(Color.white)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 30)
-                
-                Spacer()
-                    .frame(height: 40)
-                
-                Image("user")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100, height: 100, alignment: .bottom)
-                    .clipped()
-                    .shadow(radius: 3)
-                
-                Spacer()
-                    .frame(height:30)
-            
-                Form {
-                    Section(header: Text("Personal Information")) {
-                        HStack {
-                            Text("Username")
-                                .foregroundColor(Color("Primary"))
-                            Spacer()
-                            Text(userName)
-                                .foregroundColor(.gray)
-                        }
-                        HStack {
-                            Text("Email")
-                                .foregroundColor(Color("Primary"))
-                            Spacer()
-                            Text(userEmail)
-                                .foregroundColor(.gray)
-                        }
-                    }
+                VStack {
+                    Spacer()
+                        .frame(height: 60)
                     
-                    Section(header: Text("About Us")) {
-                        HStack {
-                            Button(action: {
-                                print("About Us Page Navigation")
-                            }) {
-                                Text("About App")
-                                    .foregroundColor(.blue)
+                    HStackLayout() {
+                        Text("Settings")
+                            .font(.custom("Fasthand-Regular", size: 44))
+                            .foregroundColor(Color.white)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 30)
+                    
+                    Spacer()
+                        .frame(height: 40)
+                    
+                    Image("user")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100, alignment: .bottom)
+                        .clipped()
+                        .shadow(radius: 3)
+                    
+                    Spacer()
+                        .frame(height:30)
+                    
+                    Form {
+                        Section(header: Text("Personal Information")) {
+                           
+                                HStack {
+                                    Text("Username")
+                                        .foregroundColor(Color("Primary"))
+                                    Spacer()
+                                    Text(userName)
+                                        .foregroundColor(.gray)
+                                }
+                     
+
+                            HStack {
+                                Text("Email")
+                                    .foregroundColor(Color("Primary"))
+                                Spacer()
+                                Text(userEmail)
+                                    .foregroundColor(.gray)
                             }
-                            Spacer()
-                            Image("next")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 30, height: 30, alignment: .bottom)
                         }
                         
-                        HStack {
-                            Link("Terms of Service", destination: URL(string: "https://google.com")!)
-                            Spacer()
-                            Image("next")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 30, height: 30, alignment: .bottom)
+                        Section(header: Text("About Us")) {
+                            NavigationLink(destination: AboutView(), label: {
+                                HStack {
+                                    Button(action: {
+                                        
+                                    }) {
+                                        Text("About App")
+                                            .foregroundColor(.blue)
+                                    }
+                                }
+                            })
+                            
+                            NavigationLink(destination: AboutView(), label: {
+                                HStack {
+                                    Link("Terms of Service", destination: URL(string: "https://google.com")!)
+                                }
+                            })
                         }
-                    }
-                    
-                    Section(header: Text("Account Actions")) {
-                        Toggle("Dark Theme", isOn: $darkTheme)
-                            .tint(Color("Gradient2"))
-                            .foregroundColor(Color("Primary"))
                         
-                        HStack {
-                            Button(action: {
-                                print("About Us Page Navigation")
-                            }) {
-                                Text("Log Out")
-                                    .foregroundColor(Color(.red))
-                            }
-                            Spacer()
-                            Image("next")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 30, height: 30, alignment: .bottom)
+                        Section(header: Text("Account Actions")) {
+                            Toggle("Dark Theme", isOn: $darkTheme)
+                                .tint(Color("Gradient2"))
+                                .foregroundColor(Color("Primary"))
+                   
+                                HStack {
+                                    Button(action: {
+                                        withAnimation {
+                                            showLogOut = true
+                                        }
+                                    }) {
+                                        Text("Log Out")
+                                            .foregroundColor(Color(.red))
+                                    }
+                                }
+                     
                         }
                     }
                 }
             }
-        }
-        .ignoresSafeArea(.all)
-        .onAppear {
-            self.fetchDataFromFirestore()
+            .ignoresSafeArea(.all)
+            .onAppear {
+                self.fetchDataFromFirestore()
+            }
+            .navigationTitle("")
+        }.actionSheet(isPresented: $showLogOut) {
+            .init(title: Text(""), message: Text("Do you want to log out?"), buttons: [
+                .destructive(Text("Log Out"), action: {
+                    withAnimation {
+                        isLoggedIn = false
+                    }
+                }),
+                .cancel()
+            ])
+            
         }
     }
 }
 
 struct SettingView_Previews: PreviewProvider {
+    @State static var isLoggedIn = true
     static var previews: some View {
-        SettingView()
+        SettingView(isLoggedIn: $isLoggedIn)
     }
 }

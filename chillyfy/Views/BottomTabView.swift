@@ -11,11 +11,13 @@
 import SwiftUI
 
 struct BottomTabView: View {
-    //@Binding var isLoggedIn: Bool
+    
     @State var selectedTab = "Home"
-    init() {
-        UITabBar.appearance().isHidden = true
-    }
+    @Binding var isLoggedIn: Bool
+    
+//    init() {
+//        UITabBar.appearance().isHidden = true
+//    }
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
@@ -34,7 +36,7 @@ struct BottomTabView: View {
                         .ignoresSafeArea(.all, edges: .all)
                         .tag("Heart")
                     
-                    SettingView()
+                SettingView(isLoggedIn: $isLoggedIn)
                         .ignoresSafeArea(.all, edges: .all)
                         .tag("Setting")
                 }
@@ -89,8 +91,9 @@ struct BottomTabView: View {
 }
 
 struct BottomTabView_Previews: PreviewProvider {
+    @State static var isLoggedIn = true
     static var previews: some View {
-        BottomTabView()
+        BottomTabView(isLoggedIn: $isLoggedIn)
     }
 }
 

@@ -34,7 +34,7 @@ struct WeatherMapView_Previews: PreviewProvider {
 
 final class WeatherMapViewModal: NSObject, ObservableObject, CLLocationManagerDelegate {
     
-    @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 43.72662677253413, longitude: -79.75619216635543), span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09))
+    @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 43.731795087500494, longitude: -79.76161174046985), span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09))
     
     var locationManager: CLLocationManager?
     
