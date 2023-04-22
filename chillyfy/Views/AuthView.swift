@@ -2,11 +2,11 @@
 
 //  Authors: Himanshu (301296001) & Gurminder (301294300)
 //  Subject: MAPD724 Advanced iOS Development
-//  Assignment: Assignment 4 Part 1
+//  Assignment: Assignment 4 Part 2
 
 //  Task: Creating Weather App
 
-//  Date modified: 26/03/2023
+//  Date modified: 16/04/2023
 
 import SwiftUI
 import FirebaseAuth
@@ -40,8 +40,8 @@ struct AuthView: View {
 
 struct LoginView: View {
     @AppStorage("uid") var userID:String = ""
-    @State var email: String = "him@yopmail.com"
-    @State var password: String = "himanshu"
+    @State var email: String = ""
+    @State var password: String = ""
     @State var isShowingDetailView = false
     @Binding var currentAuthView: String
     @Binding var isLoggedIn: Bool

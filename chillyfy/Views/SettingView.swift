@@ -2,11 +2,11 @@
 
 //  Authors: Himanshu (301296001) & Gurminder (301294300)
 //  Subject: MAPD724 Advanced iOS Development
-//  Assignment: Assignment 4 Part 1
+//  Assignment: Assignment 4 Part 2
 
 //  Task: Creating Weather App
 
-//  Date modified: 26/03/2023
+//  Date modified: 16/04/2023
 
 import SwiftUI
 import FirebaseAuth
@@ -19,6 +19,7 @@ struct SettingView: View {
     @State var userName = ""
     @State var userEmail = ""
     @State var darkTheme = true
+    @State var isCelsius = true
     @State var showLogOut = false
     @Binding var isLoggedIn: Bool
     
@@ -34,12 +35,21 @@ struct SettingView: View {
                 let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                 userName = document.data()!["username"] as! String
                 userEmail = document.data()!["email"] as! String
+                isCelsius = (((document.data()!["tempCelsius"])) as! Bool)
                 print("Document data: \(dataDescription)")
             } else {
                 print("Document does not exist")
             }
         }
     }
+    
+    
+    func saveDataToFirebase() {
+        db.collection("users").document(loggedUserId).setData(
+            ["tempCelsius": isCelsius],
+            merge: true)
+    }
+
     
     var body: some View {
         NavigationView {
@@ -103,18 +113,19 @@ struct SettingView: View {
                                     }
                                 }
                             })
-                            
-                            NavigationLink(destination: AboutView(), label: {
-                                HStack {
-                                    Link("Terms of Service", destination: URL(string: "https://google.com")!)
-                                }
-                            })
                         }
                         
                         Section(header: Text("Account Actions")) {
                             Toggle("Dark Theme", isOn: $darkTheme)
                                 .tint(Color("Gradient2"))
                                 .foregroundColor(Color("Primary"))
+                            
+                            Toggle("Celsius", isOn: $isCelsius)
+                                .tint(Color("Gradient2"))
+                                .foregroundColor(Color("Primary"))
+                                .onChange(of: isCelsius) { value in
+                                           saveDataToFirebase()
+                                        }
                    
                                 HStack {
                                     Button(action: {
@@ -129,6 +140,8 @@ struct SettingView: View {
                      
                         }
                     }
+                    
+                    Spacer()
                 }
             }
             .ignoresSafeArea(.all)

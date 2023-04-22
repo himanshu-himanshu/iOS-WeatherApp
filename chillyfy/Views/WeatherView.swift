@@ -2,11 +2,11 @@
 
 //  Authors: Himanshu (301296001) & Gurminder (301294300)
 //  Subject: MAPD724 Advanced iOS Development
-//  Assignment: Assignment 4 Part 1
+//  Assignment: Assignment 4 Part 2
 
 //  Task: Creating Weather App
 
-//  Date modified: 26/03/2023
+//  Date modified: 16/04/2023
 
 import SwiftUI
 import MapKit
@@ -17,7 +17,9 @@ struct WeatherView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("Gradient2"), Color("Gradient1")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            
+            // MARK: Background Color
+            Color.weatherViewBackground
             
             VStack {
                 Spacer()
@@ -80,7 +82,7 @@ struct WeatherView: View {
                 }.padding(.horizontal, 20)
                 
                 Spacer()
-                    .frame(height: 60)
+                    .frame(height: 40)
             }
         }
         .ignoresSafeArea(.all)

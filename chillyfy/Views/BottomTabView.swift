@@ -2,11 +2,11 @@
 
 //  Authors: Himanshu (301296001) & Gurminder (301294300)
 //  Subject: MAPD724 Advanced iOS Development
-//  Assignment: Assignment 4 Part 1
+//  Assignment: Assignment 4 Part 2
 
 //  Task: Creating Weather App
 
-//  Date modified: 26/03/2023
+//  Date modified: 16/04/2023
 
 import SwiftUI
 
@@ -14,17 +14,13 @@ struct BottomTabView: View {
     
     @State var selectedTab = "Home"
     @Binding var isLoggedIn: Bool
-    
-//    init() {
-//        UITabBar.appearance().isHidden = true
-//    }
-    
+
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             withAnimation {
                 
             TabView(selection: $selectedTab) {
-                WeatherInitialView(cityName: "Brampton")
+                WeatherInitialView(cityName: "", lat: "43.73157487403425", lon: "-79.76253502027703")
                         .ignoresSafeArea(.all, edges: .all)
                         .tag("Home")
                     

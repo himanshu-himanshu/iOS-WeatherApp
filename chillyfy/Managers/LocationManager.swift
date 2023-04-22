@@ -13,7 +13,6 @@ class LocationManager: NSObject, ObservableObject {
    
     private let locationManager = CLLocationManager()
     
-    
     @Published var locations: [CLLocation] = []
     @Published var location: CLLocationCoordinate2D?
     @Published var isLoading = false

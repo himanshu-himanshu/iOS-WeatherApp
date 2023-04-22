@@ -1,21 +1,46 @@
-//
-//  SavedCitiesView.swift
 //  File Name: SavedCities.swift
 
 //  Authors: Himanshu (301296001) & Gurminder (301294300)
 //  Subject: MAPD724 Advanced iOS Development
-//  Assignment: Assignment 4 Part 1
+//  Assignment: Assignment 4 Part 2
 
 //  Task: Creating Weather App
 
-//  Date modified: 26/03/2023
+//  Date modified: 16/04/2023
 
 import SwiftUI
+import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
 
 struct SavedCitiesView: View {
   @ObservedObject private var viewModel = popularCitiesViewModel()
   @ObservedObject private var values = userValues()
   @State var isLinkActive = false
+    @State var isCelsius = true
+    let loggedUserId = AuthView.loggedUserID
+    
+    @State var units = "metric"
+    
+    let db = Firestore.firestore()
+    
+    
+    /** Fetch data from Firestore database using logged in user ID */
+    func fetchDataFromFirestore() {
+        
+        let docRef = db.collection("users").document(loggedUserId)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                isCelsius = (((document.data()!["tempCelsius"])) as! Bool)
+                units = isCelsius ? "metric" : "imperial"
+                print("Document data: \(dataDescription)")
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
 
   var body: some View {
     NavigationView {
@@ -43,7 +68,7 @@ struct SavedCitiesView: View {
           VStack {
             List(viewModel.cities) { city in
               NavigationLink(
-                destination: WeatherInitialView(cityName: city.name),
+                destination: WeatherInitialView(cityName: city.name, lat: city.lat, lon: city.lon, units: units),
                 label: {
                   HStack(spacing: 40) {
                     AsyncImage(url: URL(string: city.imageUrl)!) { image in
@@ -70,6 +95,7 @@ struct SavedCitiesView: View {
           }
           .onAppear {
             self.viewModel.fetchData()
+              fetchDataFromFirestore()
           }
         }
 
